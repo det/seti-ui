@@ -8,6 +8,7 @@ env
 
 "${TRUNK_PATH}" check github_annotate \
   --ci \
+  --upstream HEAD \
   --github-commit "${GITHUB_EVENT_WORKFLOW_RUN_HEAD_SHA}" \
   --github-label "${INPUT_LABEL}" \
   /tmp/annotations.bin \

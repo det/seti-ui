@@ -199,6 +199,7 @@ runs:
         # Run trunk check on Trunk Merge
         ${GITHUB_ACTION_PATH}/annotate.sh
       env:
+        GITHUB_EVENT_WORKFLOW_RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         GITHUB_REPOSITORY: ${{ github.repository }}
         GITHUB_SHA: ${{ github.sha }}
         GITHUB_TOKEN: ${{ github.token }}

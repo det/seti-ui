@@ -204,7 +204,7 @@ runs:
         GITHUB_SHA: ${{ github.sha }}
         GITHUB_TOKEN: ${{ github.token }}
         INPUT_ARGUMENTS: ${{ inputs.arguments }}
-        INPUT_LABEL: ${{ inputs.label }}mv
+        INPUT_LABEL: ${{ inputs.label }}
 
     - name: Cleanup temporary files
       if: always()

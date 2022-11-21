@@ -3,6 +3,10 @@ Anyone is welcome to contribute to the development of this theme. It can be a lo
 
 ## Getting The Code
 
+
+
+
+
 ### 1. Fork
 If you're keen to contribute, start by [forking](https://github.com/jesseweed/seti-ui/tree/1.0-beta#fork-destination-box) the repo and cloning it to your computer.
 

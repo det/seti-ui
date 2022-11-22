@@ -1,7 +1,5 @@
-name: Comment on the pull request
+name: Annotate PR with trunk issues
 
-# read-write repo token
-# access to secrets
 on:
   workflow_run:
     workflows: ["Pull Request"]
@@ -14,12 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Dump context
-        uses: crazy-max/ghaction-dump-context@v1
       - name: Trunk Check
-        uses: ./gh_action
+        uses: <trunkio action>
         with:
-          cache: false
           upload-annotations: true

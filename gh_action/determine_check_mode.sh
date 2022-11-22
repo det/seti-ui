@@ -12,8 +12,10 @@ if [[ -z ${check_mode} ]]; then
     check_mode="push"
   elif [[ ${GITHUB_EVENT_NAME} == "workflow_dispatch" && ${GITHUB_REF_NAME} == trunk-merge/* ]]; then
     check_mode="trunk_merge"
-  else
+  elif [[ ${GITHUB_EVENT_NAME} == "workflow_dispatch" ]]; then
     check_mode="all"
+  else
+    check_mode="none"
   fi
 fi
 

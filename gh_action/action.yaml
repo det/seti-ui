@@ -70,7 +70,7 @@ runs:
         ${GITHUB_ACTION_PATH}/determine_check_mode.sh
       env:
         INPUT_CHECK_MODE: ${{ inputs.check-mode }}
-        INPUT_SAVE_ANNOTATIONS: ${{ save-annotations }}
+        INPUT_SAVE_ANNOTATIONS: ${{ inputs.save-annotations }}
 
     - name: Cache Linters/Formatters
       if: env.TRUNK_CHECK_MODE != 'none' && inputs.cache == 'true'

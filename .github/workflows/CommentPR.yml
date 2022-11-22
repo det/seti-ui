@@ -13,6 +13,6 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: <trunkio action>
+        uses: ./gh_action
         with:
           upload-annotations: true

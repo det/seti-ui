@@ -161,7 +161,7 @@ runs:
       with:
         # TODO(chris): We can't use the official download artifact action yet: https://github.com/actions/download-artifact/issues/172
         script: |
-          var artifacts = await github.actions.listWorkflowRunArtifacts({
+          var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
               owner: context.repo.owner,
               repo: context.repo.repo,
               run_id: ${{github.event.workflow_run.id }},

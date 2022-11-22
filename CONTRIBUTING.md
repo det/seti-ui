@@ -5,6 +5,9 @@ Anyone is welcome to contribute to the development of this theme. It can be a lo
 
 
 
+
+
+
 ## Getting The Code
 
 ### 1. Fork

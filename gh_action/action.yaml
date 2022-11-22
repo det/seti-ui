@@ -169,7 +169,7 @@ runs:
           var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
             return artifact.name == "trunk-annotations"
           })[0];
-          var download = await github.actions.downloadArtifact({
+          var download = await github.rest.actions.downloadArtifact({
               owner: context.repo.owner,
               repo: context.repo.repo,
               artifact_id: matchArtifact.id,

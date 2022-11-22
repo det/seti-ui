@@ -20,7 +20,7 @@ if [[ -z ${check_mode} ]]; then
 fi
 
 annotation_arguments=--github-annotate
-if [[ -z ${INPUT_SAVE_ANNOTATIONS} ]]; then
+if [[ ${INPUT_SAVE_ANNOTATIONS} == "true" ]]; then
   annotation_arguments=--github-annotate-file "${TRUNK_TMPDIR}/annotations.bin"
 fi
 

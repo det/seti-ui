@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v1
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Trunk Check
         uses: ./gh_action
-        # with:
-        #   save-annotations: true
+        with:
+          save-annotations: true

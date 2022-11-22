@@ -17,4 +17,4 @@ jobs:
       - name: Trunk Check
         uses: ./gh_action
         with:
-          upload-annotations: true
+          post-annotations: true

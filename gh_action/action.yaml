@@ -51,12 +51,14 @@ inputs:
     required: false
 
   save-annotations:
-    description: Whether annotations should be uploaded as an artifact for later uploading.
+    description:
+      Save annotations as an artifact instead of posting them from this action. This is neccesary
+      if your repository will be used with forks as they will will not have permissions to upload annotations.
     required: false
     default: "false"
 
-  upload-annotations:
-    description: Whether annotations should be uploaded as an artifact for later uploading.
+  post-annotations:
+    description: Post annotations previously uploaded with the `save-annotations` option.
     required: false
     default: "false"
 
@@ -155,7 +157,7 @@ runs:
         path: ${{ env.TRUNK_TMPDIR }}/annotations.bin
 
     - name: Download annotations artifact
-      uses: actions/github-script@v3.1.0
+      uses: actions/github-script@v6
       with:
         # TODO(chris): We can't use the official download artifact action yet: https://github.com/actions/download-artifact/issues/172
         script: |
@@ -176,15 +178,17 @@ runs:
           var fs = require('fs');
           fs.writeFileSync('${{ env.TRUNK_TMPDIR }}/annotations.zip', Buffer.from(download.data));
 
-    - name: Download annotations artifact
-      run: cd ${{ env.TRUNK_TMPDIR }} && unzip annotations.zip
+    - name: Unpack annotations artifact
+      run: |
+        # Unpack annotations artifact
+        cd ${{ env.TRUNK_TMPDIR }} && unzip annotations.zip
       shell: bash
 
-    - name: Upload annotations
-      if: inputs.upload-annotations == 'true'
+    - name: Post annotations
+      if: inputs.post-annotations == 'true'
       shell: bash
       run: |
-        # Run trunk check on Trunk Merge
+        # Post annotations
         ${GITHUB_ACTION_PATH}/annotate.sh
       env:
         GITHUB_EVENT_WORKFLOW_RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}

@@ -20,8 +20,8 @@ if [[ -z ${check_mode} ]]; then
 fi
 
 annotation_arguments=--github-annotate
-if [[ -z ${INPUT_SAVE_ANNOTATIONS} ]]; then
-  annotation_arguments=--github-annotate-file "${TRUNK_TMPDIR}/annotations.bin"
+if [[ ${INPUT_SAVE_ANNOTATIONS} == "true" ]]; then
+  annotation_arguments=--github-annotate-file=${TRUNK_TMPDIR}/annotations.bin
 fi
 
 echo "TRUNK_CHECK_MODE=${check_mode}" >>"${GITHUB_ENV}"

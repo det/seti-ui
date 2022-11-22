@@ -22,5 +22,5 @@ echo "Detected merge queue commit, using HEAD^1 (${upstream}) as upstream and HE
   --upstream "${upstream}" \
   --github-commit "${git_commit}" \
   --github-label "${INPUT_LABEL}" \
-  --github-annotate \
+  ${TRUNK_ANNOTATION_ARGUMENTS} \
   ${INPUT_ARGUMENTS}

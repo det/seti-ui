@@ -11,5 +11,5 @@ env
   --upstream HEAD \
   --github-commit "${GITHUB_EVENT_WORKFLOW_RUN_HEAD_SHA}" \
   --github-label "${INPUT_LABEL}" \
-  /tmp/annotations.bin \
+  "${TRUNK_TMPDIR}/annotations.bin" \
   ${INPUT_ARGUMENTS}

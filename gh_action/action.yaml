@@ -151,7 +151,7 @@ runs:
       uses: actions/upload-artifact@v3
       with:
         name: trunk-annotations
-        path: /tmp/annotations.bin
+        path: ${{ env.TRUNK_TMPDIR }}/annotations.bin
 
     - name: Download annotations artifact
       uses: actions/github-script@v3.1.0
@@ -173,10 +173,10 @@ runs:
               archive_format: 'zip',
           });
           var fs = require('fs');
-          fs.writeFileSync('${{github.workspace}}/trunk-annotations.zip', Buffer.from(download.data));
+          fs.writeFileSync('${{ env.TRUNK_TMPDIR }}/annotations.zip', Buffer.from(download.data));
 
     - name: Download annotations artifact
-      run: unzip trunk-annotations.zip && mv annotations.bin /tmp && rm trunk-annotations.zip
+      run: cd ${{ env.TRUNK_TMPDIR }} && unzip annotations.zip
       shell: bash
 
     - name: Upload annotations

@@ -33,5 +33,5 @@ fi
   --upstream "${upstream}" \
   --github-commit "${git_commit}" \
   --github-label "${INPUT_LABEL}" \
-  --github-annotate-file /tmp/annotations.bin \
+  ${TRUNK_ANNOTATION_ARGUMENTS} \
   ${INPUT_ARGUMENTS}

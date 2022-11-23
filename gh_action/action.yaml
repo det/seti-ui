@@ -151,7 +151,7 @@ runs:
         INPUT_LABEL: ${{ inputs.label }}
 
     - name: Upload annotations artifact
-      if: env.TRUNK_UPLOAD_ANNOTATIONS == "true"
+      if: env.TRUNK_UPLOAD_ANNOTATIONS == 'true'
       uses: actions/upload-artifact@v3
       with:
         name: trunk-annotations

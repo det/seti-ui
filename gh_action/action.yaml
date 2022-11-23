@@ -158,6 +158,7 @@ runs:
         path: ${{ env.TRUNK_TMPDIR }}/annotations.bin
 
     - name: Download annotations artifact
+      if: inputs.post-annotations == 'true'
       uses: actions/github-script@v6
       with:
         # TODO(chris): We can't use the official download artifact action yet: https://github.com/actions/download-artifact/issues/172
@@ -180,6 +181,7 @@ runs:
           fs.writeFileSync('${{ env.TRUNK_TMPDIR }}/annotations.zip', Buffer.from(download.data));
 
     - name: Unpack annotations artifact
+      if: inputs.post-annotations == 'true'
       run: |
         # Unpack annotations artifact
         cd ${{ env.TRUNK_TMPDIR }} && unzip annotations.zip

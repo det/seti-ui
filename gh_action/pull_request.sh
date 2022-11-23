@@ -28,10 +28,23 @@ if [[ -z ${upstream+x} ]]; then
   fetch origin "${upstream}"
 fi
 
+save_annotations=${INPUT_SAVE_ANNOTATIONS}
+if [[ ${save_annotations} == "auto" && ${GITHUB_EVENT_PULL_REQUEST_HEAD_FORK} == "true" ]]; then
+  echo "Fork detected, saving annotations to an artifact."
+  save_annotations=true
+fi
+
+annotation_argument=--github-annotate
+if [[ ${save_annotations} == "true" ]]; then
+  annotation_argument=--github-annotate-file=${TRUNK_TMPDIR}/annotations.bin
+  # Signal that we need to upload an annotations artifact
+  echo "TRUNK_ANNOTATIONS_FILE=${TRUNK_TMPDIR}/annotations.bin" >>"${GITHUB_ENV}"
+fi
+
 "${TRUNK_PATH}" check \
   --ci \
   --upstream "${upstream}" \
   --github-commit "${git_commit}" \
   --github-label "${INPUT_LABEL}" \
-  ${TRUNK_ANNOTATION_ARGUMENTS} \
+  "${annotation_argument}" \
   ${INPUT_ARGUMENTS}

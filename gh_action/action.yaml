@@ -97,7 +97,7 @@ runs:
         ${GITHUB_ACTION_PATH}/pull_request.sh
       env:        
         GITHUB_EVENT_PULL_REQUEST_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        GITHUB_EVENT_PULL_REQUEST_HEAD_FORK: ${{ github.event.pull_request.base.fork }}
+        GITHUB_EVENT_PULL_REQUEST_HEAD_FORK: ${{ github.event.pull_request.head.fork }}
         GITHUB_EVENT_PULL_REQUEST_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         GITHUB_EVENT_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
         GITHUB_REF_NAME: ${{ github.ref_name }}

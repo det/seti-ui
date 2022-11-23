@@ -17,5 +17,3 @@ jobs:
 
       - name: Trunk Check
         uses: ./gh_action
-        with:
-          save-annotations: true

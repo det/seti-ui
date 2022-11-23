@@ -38,7 +38,7 @@ annotation_argument=--github-annotate
 if [[ ${save_annotations} == "true" ]]; then
   annotation_argument=--github-annotate-file=${TRUNK_TMPDIR}/annotations.bin
   # Signal that we need to upload an annotations artifact
-  echo "TRUNK_ANNOTATIONS_FILE=${TRUNK_TMPDIR}/annotations.bin" >>"${GITHUB_ENV}"
+  echo "TRUNK_UPLOAD_ANNOTATIONS=true" >>"${GITHUB_ENV}"
 fi
 
 "${TRUNK_PATH}" check \

@@ -151,14 +151,13 @@ runs:
         INPUT_LABEL: ${{ inputs.label }}
 
     - name: Upload annotations artifact
-      if: always() && inputs.save-annotations == 'true'
+      if: env.TRUNK_UPLOAD_ANNOTATIONS == "true"
       uses: actions/upload-artifact@v3
       with:
         name: trunk-annotations
         path: ${{ env.TRUNK_TMPDIR }}/annotations.bin
 
     - name: Download annotations artifact
-      if: env.TRUNK_ANNOTATIONS_FILE != ""
       uses: actions/github-script@v6
       with:
         # TODO(chris): We can't use the official download artifact action yet: https://github.com/actions/download-artifact/issues/172
@@ -181,14 +180,13 @@ runs:
           fs.writeFileSync('${{ env.TRUNK_TMPDIR }}/annotations.zip', Buffer.from(download.data));
 
     - name: Unpack annotations artifact
-      if: env.TRUNK_ANNOTATIONS_FILE != ""
       run: |
         # Unpack annotations artifact
         cd ${{ env.TRUNK_TMPDIR }} && unzip annotations.zip
       shell: bash
 
     - name: Post annotations
-      if: env.TRUNK_ANNOTATIONS_FILE != ""
+      if: inputs.post-annotations == 'true'
       shell: bash
       run: |
         # Post annotations

@@ -55,7 +55,7 @@ inputs:
       Save annotations as an artifact instead of posting them from this action. This is neccesary
       if your repository will be used with forks as they will will not have permissions to upload annotations.
     required: false
-    default: "false"
+    default: "auto"
 
   post-annotations:
     description: Post annotations previously uploaded with the `save-annotations` option.

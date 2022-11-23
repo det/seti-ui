@@ -18,6 +18,5 @@ else
     --upload \
     --series "${INPUT_UPLOAD_SERIES:-${GITHUB_REF_NAME}}" \
     --token "${INPUT_TRUNK_TOKEN}" \
-    ${TRUNK_ANNOTATION_ARGUMENTS} \
     ${INPUT_ARGUMENTS}
 fi

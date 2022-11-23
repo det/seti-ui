@@ -30,5 +30,4 @@ fi
   --upstream "${upstream}" \
   --github-commit "${GITHUB_EVENT_AFTER}" \
   --github-label "${INPUT_LABEL}" \
-  ${TRUNK_ANNOTATION_ARGUMENTS} \
   ${INPUT_ARGUMENTS}

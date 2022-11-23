@@ -29,8 +29,8 @@ if [[ -z ${upstream+x} ]]; then
 fi
 
 save_annotations=${INPUT_SAVE_ANNOTATIONS}
-echo FORK? ${GITHUB_EVENT_PULL_REQUEST_HEAD_FORK}
-if [[ ${save_annotations} == "auto" && ${GITHUB_EVENT_PULL_REQUEST_HEAD_FORK} == "true" ]]; then
+echo FORK? ${GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK}
+if [[ ${save_annotations} == "auto" && ${GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FORK} == "true" ]]; then
   echo "Fork detected, saving annotations to an artifact."
   save_annotations=true
 fi

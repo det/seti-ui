@@ -186,7 +186,7 @@ runs:
       shell: bash
 
     - name: Post annotations
-      if: inputs.post-annotations == 'true'
+      if: env.TRUNK_ANNOTATIONS_FILE != ""
       shell: bash
       run: |
         # Post annotations
